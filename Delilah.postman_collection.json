@@ -241,7 +241,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"price\": 0\n}",
+							"raw": "{\n\t\"name\": \"sushi\",\n    \"category\": \"pescados\",\n    \"description\": \"sushi varios\",\n    \"price\": 900,\n    \"requestedBy\": \"mariana\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -271,7 +271,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"price\": 0\n}",
+							"raw": "{\n\t\"name\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"price\": 0,\n    \"requestedBy\": \"mariana\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -338,6 +338,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"string\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"price\": 0,\n    \"requestedBy\": \"mariana\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/dish/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"dish",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -373,7 +404,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id_user\": 1,\n    \"date\": \"15-05-2020\",\n    \"payment\": \"string\",\n    \"status\": \"string\",\n    \"price\": 1,\n    \"adress_user\": \"string\",\n    \"phone_user\": \"string\",\n    \"comments\": \"string\"\n}",
+							"raw": "{\n\t\"id_user\": 7,\n    \"date\": \"15-05-2020\",\n    \"payment\": \"string\",\n    \"status\": \"string\",\n    \"price\": 1,\n    \"adress_user\": \"string\",\n    \"phone_user\": \"string\",\n    \"comments\": \"string\",\n    \"dishes\" : [\n    {\n      \"id_dish\": 1,\n      \"cant_dish\": 2,\n      \"price_dish\": 3\n    },\n    {\n      \"id_dish\": 2,\n      \"cant_dish\": 1,\n      \"price_dish\": 10\n    }\n  ]\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -495,6 +526,35 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Autenticar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nickName\": \"santiago_alvarez\",\n    \"password\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/autenticar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"autenticar"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
