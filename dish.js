@@ -24,6 +24,11 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     category: {type: Sequelize.STRING},
     description: {type: Sequelize.STRING},
     price: {type: Sequelize.REAL},
+    requestedBy: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {notEmpty: true,}
+  },
   })
 
   function getAllDishes() {
@@ -45,6 +50,7 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
         category: request.body.category,
         description: request.body.description,
         price: request.body.price,
+        requestedBy: request.body.requestedBy,
     })
   }
 
@@ -53,7 +59,9 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
       name: request.body.name,
       category: request.body.category,
       description: request.body.description,
-      price: request.body.price},
+      price: request.body.price,
+      requestedBy: request.body.requestedBy},
+      
     {
         where: {
             id: request.params.id

@@ -77,19 +77,19 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     return users.findAll()
   }
 
-  function getById(request) {
+  function getById(id) {
     return users.findOne({
         where: {
-            id: request.params.id
+            id: id
         }
     }
     )
   }
 
-  function getByNickName(request) {
+  function getByNickName(nickName) {
     return users.findOne({
         where: {
-            nick_name: request.params.nickName
+            nick_name: nickName
         }
     }
     )

@@ -46,6 +46,15 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     )
   }
 
+
+
+function getMaxId(request) {
+  return orders.findAll({
+  attributes: [[sequelize.fn('max', sequelize.col('id')), 'maxId']],
+  raw: true,
+});
+}
+
   function addOrder(request) {
     return orders.create({
         id_user: request.body.id_user,
@@ -86,5 +95,5 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     )
   }
   
-  module.exports =  {getAllOrders, getById, addOrder, updateOrder, deleteOrder, orders};
+  module.exports =  {getAllOrders, getById, addOrder, updateOrder, deleteOrder, getMaxId, orders};
   

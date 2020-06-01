@@ -14,31 +14,35 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
   })
 
   const orders_dishes = sequelize.define('orders_dishes', {
-    id_order: {type: Sequelize.SMALLINT},
-    id_dish: {type: Sequelize.SMALLINT},
+    id_order: {type: Sequelize.SMALLINT, foreignKey: true, primaryKey: true},
+    id_dish: {type: Sequelize.SMALLINT, foreignKey: true, primaryKey: true},
+    cant_dish: {type: Sequelize.SMALLINT},
+    price_dish: {type: Sequelize.REAL},
   })
 
 
   function getByOrderId(idOrder) {
     return orders_dishes.findOne({
         where: {
-            id: idOrder
+            id_order: idOrder
         }
     }
     )
   }
 
   function addOrderDish(request) {
-    return order_dishes.create({
-        id_order: request.body.id_user,
-        id_dish: request.body.date,
+    return orders_dishes.create({
+        id_order: 1,//request.id_order,
+        id_dish: request.id_dish,
+        cant_dish: request.cant_dish,
+        price_dish: request.price_dish,
     })
   }
 
   function deleteOrderDish(request) {
-    return order_dishes.destroy({
+    return orders_dishes.destroy({
         where: {
-            id: request.params.id
+            order_id: request.params.id
         }
     }
     )
