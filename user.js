@@ -77,10 +77,10 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     return users.findAll()
   }
 
-  function getById(id) {
+  function getById(request) {
     return users.findOne({
         where: {
-            id: id
+          id: request.params.id
         }
     }
     )
@@ -97,12 +97,3 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
   
   module.exports =  {addUser, updateUser, deleteUser, getAllUsers, getById, getByNickName, users};
   
-
-  /*User.findAll({ attributes: ['nick_name', 'password'] })
-  .then(users => {
-    console.log(users.toJSON())
-  })
-  .catch(err => {
-    console.log(err)
-  })*/
-

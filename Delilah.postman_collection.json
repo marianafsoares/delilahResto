@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fe7a8189-4adc-4271-aff1-177c92bf1cea",
+		"_postman_id": "2f1778d1-0221-4a8f-8ec1-8e343ffb8b7f",
 		"name": "Delilah",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -378,9 +378,27 @@
 			"item": [
 				{
 					"name": "GetAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTkzOTc2NjkwLCJleHAiOjE1OTM5NzgxMzB9.wcFcmFV33q58AL5FslXKWJ1VZgSPa_kGFWiAyZ-bpZQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"requestedBy\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3001/api/order/getAll",
 							"protocol": "http",
@@ -392,6 +410,13 @@
 								"api",
 								"order",
 								"getAll"
+							],
+							"query": [
+								{
+									"key": "access-token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTkzOTc2MTYwLCJleHAiOjE1OTM5Nzc2MDB9.H1K9KurbVrAk4Hx_59CO68omiqHnI2tI7c-LKAgRZMA",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -431,10 +456,16 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTkzOTc2MTYwLCJleHAiOjE1OTM5Nzc2MDB9.H1K9KurbVrAk4Hx_59CO68omiqHnI2tI7c-LKAgRZMA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"string\"\n}",
+							"raw": "{\n    \"id\": \"1\",\n    \"status\": \"string\",\n    \"requestedBy\": \"string5\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -442,7 +473,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3001/api/order/update/1",
+							"raw": "http://localhost:3001/api/order/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -451,30 +482,7 @@
 							"path": [
 								"api",
 								"order",
-								"update",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/api/order/delete/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"order",
-								"delete",
-								"1"
+								"update"
 							]
 						}
 					},
@@ -507,7 +515,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3a62cc15-40f8-4b37-bc03-8924ec9640fd",
+						"id": "2a8103c8-d392-41f3-a8f7-7cef39316cd7",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -517,7 +525,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "62a12499-c165-4895-a9c5-c08eb8ed1f05",
+						"id": "f7468b49-bb29-4fe0-ade6-4eb95ee0df60",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -534,7 +542,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nickName\": \"santiago_alvarez\",\n    \"password\": \"string\"\n}",
+					"raw": "{\n\t\"user\": \"santiago_alvarez\",\n    \"password\": \"string\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

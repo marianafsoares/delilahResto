@@ -30,9 +30,9 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     )
   }
 
-  function addOrderDish(request) {
+  function addOrderDish(request, idOrder) {
     return orders_dishes.create({
-        id_order: 1,//request.id_order,
+        id_order: idOrder,
         id_dish: request.id_dish,
         cant_dish: request.cant_dish,
         price_dish: request.price_dish,
