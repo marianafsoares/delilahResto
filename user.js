@@ -58,7 +58,7 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
         role: request.body.role},
     {
         where: {
-            id: request.params.id
+            nick_name: request.params.nickName
         }
     }
     )

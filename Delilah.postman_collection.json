@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2f1778d1-0221-4a8f-8ec1-8e343ffb8b7f",
+		"_postman_id": "bd6693ff-fea2-448d-b075-f1ca9ef7bb3c",
 		"name": "Delilah",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -18,6 +18,12 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -44,10 +50,16 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTk0MjI3Nzk3LCJleHAiOjE1OTQyMjkyMzd9.j1SwO5yPomG8-HkGK-d2mhX1nzEaSV1tRWp70Ge19ZA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"address\": \"string\",\n    \"password\": \"string\",\n    \"role\": 1\n}",
+							"raw": "{\n    \"name\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"address\": \"string\",\n    \"password\": \"string\",\n    \"role\": 1,\n    \"requestedBy\": \"mariana\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +67,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3001/api/user/update/1",
+							"raw": "http://localhost:3001/api/user/update/admin",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -65,72 +77,7 @@
 								"api",
 								"user",
 								"update",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/api/user/delete/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"user",
-								"delete",
-								"5"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/api/user/getAll",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"user",
-								"getAll"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3001/api/user/getById/7",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3001",
-							"path": [
-								"api",
-								"user",
-								"getById",
-								"7"
+								"admin"
 							]
 						}
 					},
@@ -138,11 +85,29 @@
 				},
 				{
 					"name": "GetByNickName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTk0MjI5MjY2LCJleHAiOjE1OTQyMzA3MDZ9.CV91t-kec9fRfgApeySKi79mPD_EA043-xRWLF6L0gU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"requestedBy\": \"mariana\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3001/api/user/getByNickName/string4",
+							"raw": "http://localhost:3001/api/user/getByNickName",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -151,8 +116,7 @@
 							"path": [
 								"api",
 								"user",
-								"getByNickName",
-								"string4"
+								"getByNickName"
 							]
 						}
 					},
@@ -299,7 +263,22 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTk0MjI0NjMxLCJleHAiOjE1OTQyMjYwNzF9.f0UBl-5Iu3ycFA9-l6HTO91XCJsVjxy70uXEiGZEaR8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"requestedBy\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3001/api/dish/delete/1",
 							"protocol": "http",
@@ -386,7 +365,7 @@
 						"header": [
 							{
 								"key": "access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTkzOTc2NjkwLCJleHAiOjE1OTM5NzgxMzB9.wcFcmFV33q58AL5FslXKWJ1VZgSPa_kGFWiAyZ-bpZQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTk0MjE0MjI3LCJleHAiOjE1OTQyMTU2Njd9.ffojPJcXX3J4rhTs1Bfup22h7GpYYDEQj3iM1RgWXzc",
 								"type": "text"
 							}
 						],
@@ -410,13 +389,6 @@
 								"api",
 								"order",
 								"getAll"
-							],
-							"query": [
-								{
-									"key": "access-token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTkzOTc2MTYwLCJleHAiOjE1OTM5Nzc2MDB9.H1K9KurbVrAk4Hx_59CO68omiqHnI2tI7c-LKAgRZMA",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -426,7 +398,13 @@
 					"name": "Add",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "access-token",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"id_user\": 7,\n    \"date\": \"15-05-2020\",\n    \"payment\": \"string\",\n    \"status\": \"string\",\n    \"price\": 1,\n    \"adress_user\": \"string\",\n    \"phone_user\": \"string\",\n    \"comments\": \"string\",\n    \"dishes\" : [\n    {\n      \"id_dish\": 1,\n      \"cant_dish\": 2,\n      \"price_dish\": 3\n    },\n    {\n      \"id_dish\": 2,\n      \"cant_dish\": 1,\n      \"price_dish\": 10\n    }\n  ]\n\n}",
@@ -448,7 +426,8 @@
 								"order",
 								"add"
 							]
-						}
+						},
+						"description": "El formato de fecha debera ser dd-mm-YYYY"
 					},
 					"response": []
 				},
@@ -515,7 +494,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2a8103c8-d392-41f3-a8f7-7cef39316cd7",
+						"id": "18f8ce6a-79f4-4c44-bf09-6ac0b4bd56d2",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -525,7 +504,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f7468b49-bb29-4fe0-ade6-4eb95ee0df60",
+						"id": "19708b12-1f62-44e0-a8ac-98d35931c896",
 						"type": "text/javascript",
 						"exec": [
 							""

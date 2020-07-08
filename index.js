@@ -97,57 +97,36 @@ app.get('/api/role/getById/:id', rutasProtegidas, (request, response)=>{
 
 
 //Endpoints para Users
+app.put('/api/user/update/:nickName', rutasProtegidas, function (request, response) {
 
-app.put('/api/user/update/:id', rutasProtegidas, function (request, response) {
-    return users.updateUser(request)
-    .then(function (users) {
-        if (users) {
-            response.status(200).send('El usuario ' + request.params.id + ' ha sido actualizado con éxito')
-        } else {
-            response.status(400).send('Error in update new record');
-        }
-    });    
-});
-app.delete('/api/user/delete/:id', rutasProtegidas, function (request, response) {
-    return users.deleteUser(request)
-    .then(function (users) {
-        if (users) {
-            response.status(200).send('El usuario ' + request.params.id + ' ha sido eliminado con éxito')
-        } else {
-            response.status(400).send('Error in delete new record');
-        }
-    });    
-});
-app.get('/api/user/getAll', rutasProtegidas, (request, response) => {
-    return users.getAllUsers()
-    .then(function (users) {
-        if (users) {
-            response.send(users);
-            
-        } else {
-            response.status(400).send('Error');
-        }
+        if (request.body.requestedBy == request.params.nickName){
+            return users.updateUser(request)
+            .then(function (users) {
+                if (users) {
+                    response.status(200).send('El usuario ' + request.params.nickName + ' ha sido actualizado con éxito')
+                } else {
+                    response.status(400).send('Error in update new record');
+                }
+            })    
+            .catch(err=>response.status(400).send(err.parent.sqlMessage)); 
+            }else{
+                response.status(400).send('No tiene permisos para actualizar el ususario');
+            }
     });
-})
-app.get('/api/user/getById/:id', rutasProtegidas, (request, response)=>{
-    return users.getById(request)
-    .then(function (users) {
-        if (users) {
-            response.send(users);
-        } else {
-            response.status(400).send('Error');
-        }
-    });
-})
 app.get('/api/user/getByNickName', rutasProtegidas, (request, response)=>{
-    return users.getByNickName(request.body.nickName)
-    .then(function (users) {
-        if (users) {
-            response.send(users);
-        } else {
-            response.status(400).send('No existe el nickName ingresado');
-        }
-    });
+    if (request.body.requestedBy == request.body.nickName){
+        return users.getByNickName(request.body.nickName)
+        .then(function (users) {
+            if (users) {
+                response.send(users);
+            } else {
+                response.status(400).send('No existe el nickName ingresado');
+            }
+        });
+    }else{
+        response.status(400).send('No tiene permisos para consultar el ususario');
+    }
+    
 })
 
 //Endpoints para Dishes
@@ -292,27 +271,6 @@ app.put('/api/order/update', rutasProtegidas, function (request, response) {
                     }
                 })   
                 .catch(err=>response.status(400).send(err.parent.sqlMessage));  
-            }else{
-                response.status(400).send('El usuario ' + request.body.requestedBy + ' no posee rol de administrador');
-            }
-        }else{
-            response.status(400).send('No existe el usuario ' + request.body.requestedBy);
-        }
-    });       
-        
-});
-app.get('/api/order/getMaxId', rutasProtegidas, (request, response) => {
-    return users.getByNickName(request.body.requestedBy)
-    .then(function (users) {
-        if (users){
-            if (users.toJSON().role==1){
-                const orderList = orders.getAllOrders();
-                orderList.forEach(order => {
-                    if( order.id > max ) {
-                      max = order.id;
-                    }
-                });
-                console.log(max);
             }else{
                 response.status(400).send('El usuario ' + request.body.requestedBy + ' no posee rol de administrador');
             }
