@@ -39,10 +39,10 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     })
   }
 
-  function deleteOrderDish(request) {
+  function deleteOrderDish(idOrder) {
     return orders_dishes.destroy({
         where: {
-            order_id: request.params.id
+            id_order: idOrder
         }
     }
     )

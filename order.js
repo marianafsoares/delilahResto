@@ -70,7 +70,15 @@ const sequelize = new Sequelize('delilah', 'desarrollo', 'desarrollo', {
     }
     )
   }
+  function deleteOrder(request) {
+    return orders.destroy({
+      where: {
+          id: request.body.id
+      }
+  }
+  )
+  }
 
   
-  module.exports =  {getAllOrders, getById, addOrder, updateOrder, orders};
+  module.exports =  {getAllOrders, getById, addOrder, deleteOrder, updateOrder, orders};
   

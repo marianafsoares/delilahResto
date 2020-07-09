@@ -402,6 +402,43 @@
         }
       }
     },
+    "/order/delete": {
+      "delete": {
+        "summary": "Delete",
+        "tags": [
+          "Order"
+        ],
+        "operationId": "Delete1",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeleteRequest1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
     "/order/getById/1": {
       "get": {
         "summary": "GetById",
@@ -800,6 +837,26 @@
       "required": [
         "id",
         "status",
+        "requestedBy"
+      ]
+    },
+    "DeleteRequest1": {
+      "title": "DeleteRequest1",
+      "example": {
+        "id": "120",
+        "requestedBy": "admin"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "requestedBy": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
         "requestedBy"
       ]
     },

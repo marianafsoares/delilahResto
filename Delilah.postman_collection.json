@@ -468,6 +468,42 @@
 					"response": []
 				},
 				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGVjayI6dHJ1ZSwiaWF0IjoxNTk0MjY4ODIzLCJleHAiOjE1OTQyNzAyNjN9.FvAUlXPbPJ57A52osPu6vpu6_YJ5FQRmd3ppQTIXWOM"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"120\",\n    \"requestedBy\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/order/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"order",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GetById",
 					"request": {
 						"method": "GET",

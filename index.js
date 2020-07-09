@@ -280,6 +280,32 @@ app.put('/api/order/update', rutasProtegidas, function (request, response) {
     });       
         
 });
+app.delete('/api/order/delete', rutasProtegidas, function (request, response) {
+    return users.getByNickName(request.body.requestedBy)
+    .then(function (users) {
+        if (users){
+            if (users.toJSON().role==1){
+                return orders_dishes.deleteOrderDish(request.body.id)
+                .then(function(orders_dishes){
+                    return orders.deleteOrder(request)
+                    .then(function (orders) {
+                        if (orders) {
+                            response.status(200).send('La orden ' + request.body.id + ' ha sido eliminada con éxito')
+                        } else {
+                            response.status(400).send('No existe una orden con ese id');
+                        }
+                    })        
+                    });  
+                }else{
+                    response.status(400).send('El usuario ' + request.body.requestedBy + ' no posee rol de administrador');
+                }
+            }else{
+                response.status(400).send('No existe el usuario ' + request.body.requestedBy);
+            }
+        });       
+            
+    });
+
 app.get('/api/order/getAll', rutasProtegidas, (request, response) => {
     return users.getByNickName(request.body.requestedBy)
     .then(function (users) {
